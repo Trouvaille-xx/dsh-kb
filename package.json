@@ -1,0 +1,29 @@
+{
+  "name": "@local/dsh-kb",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Knowledge sources for DeepSeek Harness: pick a local or external knowledge source in the conversation and get traceable citations.",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": ["index.js", "local-index.js", "client.js", "cordis.patch.yml", "locale/*.json", "icon.svg"],
+  "dependencies": {
+    "pdfjs-dist": "^4.10.38",
+    "mammoth": "^1.8.0"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat"
+      ]
+    }
+  }
+}
